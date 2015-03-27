@@ -1,0 +1,56 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:urn="urn:oasis:names:tc:emergency:cap:1.2">
+   <soap:Header></soap:Header>
+   <soap:Body>
+      <alert xmlns="urn:oasis:names:tc:emergency:cap:1.2">
+         <identifier>111000-##NUM##</identifier>
+         <sender>siren.idf</sender>
+<sent>##Date##</sent>         
+         <status>Exercise</status>
+         <msgType>Alert</msgType>
+         <source>1</source>
+         <scope>Public</scope>
+         <restriction>1947</restriction>
+         <incidents>1000-##NUM##</incidents>
+         <info>
+            <category>Security</category>
+            <event>Missile</event>
+            <urgency>Immediate</urgency>
+            <severity>Extreme</severity>
+            <certainty>Observed</certainty>
+            <eventCode>
+               <valueName>MissileCategory</valueName>
+               <value>1</value>
+            </eventCode>
+            <eventCode>
+               <valueName>MissileType</valueName>
+               <value>1</value>
+            </eventCode>
+            <parameter>
+               <valueName>launch</valueName>
+               <value>##Date##</value>
+            </parameter>
+            <parameter>
+               <valueName>impact</valueName>
+<value>##Date@@##</value>
+            </parameter>
+            <parameter>
+               <valueName>sourceSentTime</valueName>
+               <value>##Date##</value>
+            </parameter>
+            <area>
+               <areaDesc>ImpactElipse</areaDesc>
+               <circle>31.200,35.033 1.0</circle>
+               <circle>31.200,35.033 2.0</circle>
+               <geocode>
+                  <valueName>CRS</valueName>
+                  <value>EPSG:4326</value>
+               </geocode>
+               <geocode>
+                  <valueName>azimut</valueName>
+                  <value>90</value>
+               </geocode>
+            </area>
+         </info>
+      </alert>
+   </soap:Body>
+</soap:Envelope>

@@ -16,14 +16,16 @@ object Cap12Tester {
     val seq = "##NUM##"
     val dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
     val dateMilis = java.lang.System.currentTimeMillis + 45000
+    def currentDirectory = new java.io.File( "." ).getCanonicalPath +"/bin/data/"
 
     val currDate = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date) + "+02:00"
     val currDatePlus = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date(dateMilis)) + "+02:00"
-    val seqNum = scala.io.Source.fromFile("d:\\Downloads\\seq.xml").mkString.toInt + 1
+    val seqNum = scala.io.Source.fromFile(currentDirectory +"seq.xml").mkString.toInt + 1
     val seqNumStr = seqNum.toString()
-    val xmlIn = scala.xml.XML.loadFile("d:\\Downloads\\soap12.xml").mkString
+    println( "currentDirectory:"+currentDirectory)
+    val xmlIn = scala.xml.XML.loadFile(currentDirectory+"soap12.xml").mkString
     val soapXml = xmlIn.replaceAll("##Date##", currDate).replaceAll("##NUM##", seqNumStr).replaceAll(datePlus, currDatePlus)
-    println(soapXml)
+//    println(soapXml)
     sendSoap12Cap12(soapXml)
     fileWriter( seqNumStr)
 //    println("___end___")
@@ -51,7 +53,7 @@ object Cap12Tester {
    *
    */
   def fileWriter(seqNum: String) {
-    val fw = new FileWriter("d:/Downloads/seq.xml", false)
+    val fw = new FileWriter("d:/Downloads/  seq.xml", false)
     println("seq:"+seqNum)
     fw.write(seqNum)
     fw.close()
