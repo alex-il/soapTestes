@@ -10,7 +10,7 @@
          <source>1</source>
          <scope>Public</scope>
          <restriction>1947</restriction>
-         <incidents>1000-##NUM##</incidents>
+         <incidents>1000##NUM##</incidents>
          <info>
             <category>Security</category>
             <event>Missile</event>
