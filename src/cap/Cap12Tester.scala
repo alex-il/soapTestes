@@ -10,6 +10,7 @@ import org.apache.http.impl.client.HttpClients
 object Cap12Tester {
 
   val date1 = "##Date##"
+  val timeZone = "+03:00"
   val datePlus = "##Date@@##"
   val seq = "##NUM##"
   val dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
@@ -20,8 +21,8 @@ object Cap12Tester {
   def main(args: Array[String]) {
     //    println("Working ....")
 
-    val currDate = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date) + "+02:00"
-    val currDatePlus = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date(dateMilis)) + "+02:00"
+    val currDate = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date) + timeZone
+    val currDatePlus = new java.text.SimpleDateFormat(dateFormat).format(new java.util.Date(dateMilis)) + "+03:00"
     val seqNum = scala.io.Source.fromFile(counterFileName).mkString.toInt + 1
     val seqNumStr = seqNum.toString()
     println("currentDirectory:" + currentDirectory)
@@ -65,7 +66,8 @@ object Cap12Tester {
    *
    */
   def sendSoap12Cap12(soapXml: String) {
-    val strURL = "http://Oleg-Lap:8888/mocknotify_Threat"
+    val strURL = "http://10.100.101.254/generic-interface/threat/missile"
+//    		val strURL = "http://Oleg-Lap:8888/mocknotify_Threat"
     val strSoapAction = "mocknotify_Threat"
     val httpPost = new HttpPost(strURL)
     val fileEntity = new org.apache.http.entity.StringEntity(soapXml)
